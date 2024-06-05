@@ -3,90 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CompNations - Results</title>
+    <!-- Link to the main CSS file -->
     <link rel="stylesheet" href="styles/main.css">
 </head>
-<%-include("partials/header.ejs") %>
+<!-- Include header partial -->
+<%- include("partials/header.ejs") %>
 <body>
-  <% if(Array.isArray(data)) { %>
-    <% console.log(data) %>
-    <main class="mt-5 mb-3">
-      <table class="table table-striped"">
-          <thead>
-            <tr>
-              <th scope="col">Statistic</th>
-              <th scope="col">Year</th>
-              <th scope="col"><%= data[0].replace(/_/g, " ") %></th>
-              <th scope="col"><%= data[1].replace(/_/g, " ") %></th>
-              <th scope="col">Difference</th>
-            </tr>
-          </thead>
-          <tbody> 
-                <%for (let i = 0; i < data[4].length; i++){ %>
-
-                  <% let countryOneValue = data[2][i].value ? data[2][i].value.toLocaleString() : "Data Unavailable" ; %>
-                  <% let countryTwoValue = data[3][i].value ? data[3][i].value.toLocaleString() : "Data Unavailable" ; %>
-                  <% res = (!data[2][i].value || !data[3][i].value) ?  "Data Unavailable" : (data[2][i].value - data[3][i].value).toLocaleString() ; %>
-                  <tr>  
-                    <th scope="row"> <%=data[4][i].replace(/_/g, " ")%> </th>
-                    <td><%= data[5] %></td>
-                    <td> <%=countryOneValue%> </td>
-                    <td><%=countryTwoValue%> </td>
-                    <td> <%= res%>  </td>
-                  </tr>
-                <% }  %>
-            
-        </tbody>
-      </table>
-
-    </main>
-
-  <% } else  {%>
-
-    <main class="mt-5 mb-3">
-        <table class="table table-striped"">
-            <thead>
+  <main class="mt-5 mb-3">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Statistic</th>
+            <th scope="col">Year</th>
+            <th scope="col"><%= Array.isArray(data) ? data[0].replace(/_/g, " ") : data.countryOne.name.replace(/_/g, " ") %></th>
+            <th scope="col"><%= Array.isArray(data) ? data[1].replace(/_/g, " ") : data.countryTwo.name.replace(/_/g, " ") %></th>
+            <th scope="col">Difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (Array.isArray(data)) { %>
+            <!-- Loop through the statistics data -->
+            <% for (let i = 0; i < data[4].length; i++) { %>
+              <% let countryOneValue = data[2][i].value ? data[2][i].value.toLocaleString() : "Data Unavailable"; %>
+              <% let countryTwoValue = data[3][i].value ? data[3][i].value.toLocaleString() : "Data Unavailable"; %>
+              <% let res = (!data[2][i].value || !data[3][i].value) ? "Data Unavailable" : (data[2][i].value - data[3][i].value).toLocaleString(); %>
               <tr>
-                <th scope="col">Statistic</th>
-                <th scope="col">Year</th>
-                <th scope="col"><%= data.countryOne.name.replace(/_/g, " ") %></th>
-                <th scope="col"><%= data.countryTwo.name.replace(/_/g, " ") %></th>
-                <th scope="col">Difference</th>
+                <th scope="row"> <%= data[4][i].replace(/_/g, " ") %> </th>
+                <td><%= data[5] %></td>
+                <td> <%= countryOneValue %> </td>
+                <td> <%= countryTwoValue %> </td>
+                <td> <%= res %> </td>
               </tr>
-            </thead>
-            <tbody>
-                
-                <% let year = data.selectedYear %>
-                <% if (!data.countryOne[year] || !data.countryTwo[year]) { %>
-                  <% let countryOneValue = !data.countryOne[year] ? "Data Unavailable" : data.countryOne[year].toLocaleString() %>
-                  <% let countryTwoValue = !data.countryTwo[year] ? "Data Unavailable" : data.countryTwo[year].toLocaleString() %> 
-                  <tr>
-                  <th scope="row"> <%=data.stat.replace(/_/g, " ")%> </th>
-                  <td><%= year %></td>
-                  <td> <%= countryOneValue   %> </td>
-                  <td> <%= countryTwoValue   %> </td>
-                  <td> - </td>
-                </tr>
-                <% } else {%>
-                  <% let countryOneValue = data.countryOne[year] %>
-                  <% let countryTwoValue = data.countryTwo[year] %>
-                  <% let res = data.countryOne[year] - data.countryTwo[year] %>
-                <tr>
-                  <th scope="row"> <%=data.stat.replace(/_/g, " ")%> </th>
-                  <td><%= year %></td>
-                  <td> <%=countryOneValue.toLocaleString()%> </td>
-                  <td><%=countryTwoValue.toLocaleString()%> </td>
-                  <td> <%= res.toLocaleString() %>  </td>
-                </tr>
-
-                <% } %>
-
-            </tbody>
-          </table>
-
-      </main>
-      <% } %>
-    <%- include("./partials/footer.ejs") %>       
-    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>  
+            <% } %>
+          <% } else { %>
+            <!-- Check if data is available for the selected year -->
+            <% let year = data.selectedYear; %>
+            <% let countryOneValue = data.countryOne[year] ? data.countryOne[year].toLocaleString() : "Data Unavailable"; %>
+            <% let countryTwoValue = data.countryTwo[year] ? data.countryTwo[year].toLocaleString() : "Data Unavailable"; %>
+            <% let res = (data.countryOne[year] && data.countryTwo[year]) ? (data.countryOne[year] - data.countryTwo[year]).toLocaleString() : "Data Unavailable"; %>
+            <tr>
+              <th scope="row"> <%= data.stat.replace(/_/g, " ") %> </th>
+              <td><%= year %></td>
+              <td> <%= countryOneValue %> </td>
+              <td> <%= countryTwoValue %> </td>
+              <td> <%= res %> </td>
+            </tr>
+          <% } %>
+        </tbody>
+    </table>
+  </main>
+  <!-- Include footer partial -->
+  <%- include("./partials/footer.ejs") %>
+  <!-- Link to the Bootstrap JavaScript bundle -->
+  <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
