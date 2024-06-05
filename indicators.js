@@ -1,0 +1,42 @@
+export const indicators = {
+    "GDP_(current_US$)": "NY.GDP.MKTP.CD",
+    "GDP_growth_(annual_%)": "NY.GDP.MKTP.KD.ZG",
+    "Agriculture,_value_added_(annual_%_growth)": "NV.AGR.TOTL.KD.ZG",
+    "Industry,_value_added_(annual_%_growth)": "NV.IND.TOTL.KD.ZG",
+    "Manufacturing,_value_added_(annual_%_growth)": "NV.IND.MANF.KD.ZG",
+    "Services,_value_added_(annual_%_growth)": "NV.SRV.TOTL.KD.ZG",
+    "Final_consumption_expenditure_(annual_%_growth)": "NE.CON.TOTL.KD.ZG",
+    "Gross_capital_formation_(annual_%_growth)": "NE.GDI.TOTL.KD.ZG",
+    "Exports_of_goods_and_services_(annual_%_growth)": "NE.EXP.GNFS.KD.ZG",
+    "Imports_of_goods_and_services_(annual_%_growth)": "NE.IMP.GNFS.KD.ZG",
+    "Agriculture,_value_added_(%_of_GDP)": "NV.AGR.TOTL.ZS",
+    "Industry,_value_added_(%_of_GDP)": "NV.IND.TOTL.ZS",
+    "Services,_value_added_(%_of_GDP)": "NV.SRV.TOTL.ZS",
+    "Final_consumption_expenditure_(%_of_GDP)": "NE.CON.TOTL.ZS",
+    "Gross_capital_formation_(%_of_GDP)": "NE.GDI.TOTL.ZS",
+    "Exports_of_goods_and_services_(%_of_GDP)": "NE.EXP.GNFS.ZS",
+    "Imports_of_goods_and_services_(%_of_GDP)": "NE.IMP.GNFS.ZS",
+    "GNI_per_capita,_Atlas_method_(current_US$)": "NY.GNP.PCAP.CD",
+    "GNI_per_capita,_PPP_(current_international_$)": "NY.GNP.PCAP.PP.CD",
+    "Population,_total": "SP.POP.TOTL",
+    "Gross_savings_(%_of_GDP)": "NY.GNS.ICTR.ZS",
+    "Adjusted_net_savings,_including_particulate_emission_damage_(%_of_GNI)": "NY.ADJ.SVNG.GN.ZS",
+    "Export_value_index_(2000_=_100)": "TX.VAL.MRCH.XD.WD",
+    "Import_value_index_(2000_=_100)": "TM.VAL.MRCH.XD.WD",
+    "Personal_remittances,_received_(%_of_GDP)": "BX.TRF.PWKR.DT.GD.ZS",
+    "Current_account_balance_(%_of_GDP)": "BN.CAB.XOKA.GD.ZS",
+    "Foreign_direct_investment,_net_inflows_(%_of_GDP)": "BX.KLT.DINV.WD.GD.ZS",
+    "Consumer_price_index_(2010_=_100)": "FP.CPI.TOTL",
+    "Export_unit_value_index_(2000_=_100)": "TX.UVI.MRCH.XD.WD",
+    "Import_unit_value_index_(2000_=_100)": "TM.UVI.MRCH.XD.WD",
+    "Net_barter_terms_of_trade_index_(2000_=_100)": "TT.PRI.MRCH.XD.WD",
+    "GDP_per_person_employed_(constant_2011_PPP_$)": "SL.GDP.PCAP.EM.KD",
+    "Unemployment,_total_(%_of_total_labor_force)_(modeled_ILO_estimate)": "SL.UEM.TOTL.ZS",
+    "Agriculture,_value_added_per_worker_(constant_2010_US$)": "NV.AGR.EMPL.KD",
+    "Industry,_value_added_per_worker_(constant_2010_US$)": "NV.IND.EMPL.KD",
+    "Services,_value_added_per_worker_(constant_2010_US$)": "NV.SRV.EMPL.KD"
+  };
+
+
+
+ 

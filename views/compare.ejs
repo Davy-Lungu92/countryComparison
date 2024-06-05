@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<%-include("partials/header.ejs") %>
+<body>
+    <main class="mt-5 mb-3">
+        <form id="country-compare" action="/compare-countries" method="post" class="container">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6 offset-md-3 mt-5">
+                  <!-- First input group -->
+                  <div class="input-group input-group-lg mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-lg">Country One</span>
+                    <input type="text" required class="form-control" name="countryOne" list="countryList" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                  </div>
+                  <!-- Second input group -->
+                  <div class="input-group input-group-lg mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-lg">Country Two</span>
+                    <input type="text" class="form-control" required name="countryTwo" list="countryList" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                  </div>
+                  <label for="select-item" class="mb-3 h4">Year:</label>
+                  <select required class="form-select form-select-sm mb-2" aria-label="Small select example"  name="year">
+                  
+                   <% let years = []; %> 
+                   <% for (let year = 1990; year <= 2022; year++) { %>
+                    <% years.push(year.toString()); %>    
+                    <% }; %>  
+                    <% years.forEach((n) => { %>
+                      <option value=<%=n%> > <%=n%></option>
+                    <%}) %>
+                    
+                    
+                  </select>
+                  <label for="select-item" class="mb-3 h3">Statistics:</label>
+                  <div class="input-group input-group-lg mb-3">
+                    <select required id="select-item" class="form-select" name="stats" multiple aria-label="Multiple select example">
+                        <option disabled>Hold CTRL for multiple Stats(less than 5)</option>
+                        <% data[1].forEach((item) => { %>
+                         <option value=<%= item %>> <%=item%></option> 
+
+                        <% }) %>
+                        
+                    </select>
+                </div>
+                  <!-- Submit button -->
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <datalist id="countryList">
+              <% data[0].forEach((country) => { %>
+              <option value=<%=country %>></option>
+              <% }) %>
+            </datalist>
+          </form>
+
+      </main>
+    <%- include("./partials/footer.ejs") %>       
+    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/myjs.js"></script>  
+</body>
+</html>
