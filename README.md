@@ -15,7 +15,7 @@ Future Enhancements:
 
 Installation:
 Clone the repository:
-using bash copy the following code - git clone https://github.com/your-username/your-repo-name.git
+using bash copy the following code -git clone https://github.com/Davy-Lungu92/countryComparison.git
 
 Navigate to the project directory: cd your-repo-name
 Install dependencies: npm install
